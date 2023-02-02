@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#cabecalho {
+    background-color: rgb(255, 165, 0);
+    height: 100px;
+    width: 100%;
+    text-shadow: black 1px 1px 1px;
+}
+
+#logo {
+    width: 120px;
+}
+
+#superior {
+    background-color: rgb(0, 89, 255);
+    padding-bottom: 20px;
+}
+
+#imgCallCenter {
+    width: 600px;
+    height: 400px;
+}
+
+#conteudo {
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+#canaisAtendimento {
+    margin-bottom: 50px;
+}
+
+#enderecos {
+    margin-bottom: 100px;
+}
+
+#opcao-pref {
+    margin-left: 20px;
+}
+
+#inferior {
+    background-color: rgba(0, 255, 0, 0.7);
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+#importante {
+    padding-bottom: 20px;
+}
+
+input:valid, select:valid, textarea:valid {
+    border-color: green;
+}
+
+input:invalid, textarea:invalid {
+    border-color: red;
+}
+
+input:placeholder-shown, textarea:placeholder-shown, select:invalid {
+    border-color: black;
+}
+
+#estado:valid, #estado:placeholder-shown, #cidade:valid, #cidade:placeholder-shown {
+    border-color: gray;
+}
+
+#redesSociais  {
+    background-color: yellow;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+#rodape {
+    background-color: rgb(0, 0, 255);
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+#rodape a {
+    color: white;
+    text-shadow: black 1px 1px;
+}
+
+.tituloRodape {
+    color: orange;
+    text-shadow: black 1px 1px;
+}
