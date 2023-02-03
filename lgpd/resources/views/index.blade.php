@@ -189,7 +189,7 @@
                     </div>
                     <div class="col-7"></div>
                     <div class="col-1 mb-3">
-                        <button id="envia" type="submit">Enviar</button>
+                        <button id="submit" type="submit" value="submit">Enviar</button>
                     </div>
                 </div>
                 
