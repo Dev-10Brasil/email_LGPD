@@ -84,7 +84,7 @@
 
         <div class="col-12 col-md-6" id="containerFormulario">
 
-            <form class="needs-validation" id="formulario" method="POST" action="/email" >
+            <form class="needs-validation" id="formulario" method="POST" action="/email">
 
                 @csrf
                 
@@ -97,7 +97,7 @@
                 <div class="form-row justify-content-between">
                     <div class="col-12 col-md-6 mb-3">
                         <label class="my-1 mr-2" for="telefone">Telefone:</label><br/>
-                        <input value="(26) 9 9182 - 7468" type="tel" class="form-control" name="telefone" id="telefone" placeholder=" " autocomplete="off" onkeypress="$(this).mask('(00) 9 0000 - 0000')"  pattern="[0-9, (), -]+$" minlength="18" required />
+                        <input value="(26) 9 9182 - 7468" type="tel" class="form-control" name="telefone" id="telefone" placeholder=" " autocomplete="off" onkeypress="$(this).mask('(00) 9 0000 - 0000')"  pattern="[0-9, (), -]+$" minlength="18"  />
                     </div>
                     <div class="col-12 col-md-6 mb-3">
                         <label class="my-1 mr-2" for="celular">Celular:</label><br/>
@@ -107,27 +107,27 @@
                 <div class="form-row justify-content-center">
                     <div class="col-12 mb-3">
                         <label class="my-1 mr-2" for="email">E-mail</label><br/>
-                        <input value="aquila.real0@gmail.com" type="email" class="form-control" name="email" id="email" placeholder=" " autocomplete="off" required />
+                        <input value="aquila.real0@gmail.com" type="email" class="form-control" name="email" id="email" placeholder=" " autocomplete="off"  />
                     </div>
                 </div>
                 <div class="form-row justify-content-between">
                     <div class="col-8 col-md-4 mb-3">
                         <label class="my-1 mr-2" for="cep">Cep:</label><br/>
-                        <input value="85.801-260" class="form-control" name="cep" type="text" id="cep" size="9" placeholder=" " autocomplete="off" onkeypress="$(this).mask('00.000-000')" pattern="[0-9, ., -]+$" minlength="10" onblur="pesquisacep(this.value);" required />
+                        <input value="85.801-260" class="form-control" name="cep" type="text" id="cep" size="9" placeholder=" " autocomplete="off" onkeypress="$(this).mask('00.000-000')" pattern="[0-9, ., -]+$" minlength="10" onblur="pesquisacep(this.value);"  />
                     </div>
                     <div class="col-4 col-md-2 mb-3">
                         <label class="my-1 mr-2">Estado:</label><br/>
-                        <input value="PR" class="form-control" name="estado" type="text" id="estado" size="2" placeholder=" " autocomplete="off" readonly required />
+                        <input value="PR" class="form-control" name="estado" type="text" id="estado" size="2" placeholder=" " autocomplete="off" readonly  />
                     </div>
                     <div class="col-12 col-md-6 mb-3">
                         <label class="my-1 mr-2">Cidade:</label><br/>
-                        <input value="Cascavel" class="form-control" name="cidade" type="text" id="cidade" size="20" placeholder=" " autocomplete="off" readonly required />
+                        <input value="Cascavel" class="form-control" name="cidade" type="text" id="cidade" size="20" placeholder=" " autocomplete="off" readonly  />
                     </div>
                 </div>
                 <div class="form-row justify-content-between">
                     <div class="col-12 col-md-6 col-xl-4 mb-3">
                         <label class="my-1 mr-2" for="acao">O que você deseja fazer?</label><br/>
-                        <select class="custom-select my-1 mr-sm-2" name="acao" id="acao" autocomplete="off" required >
+                        <select class="custom-select my-1 mr-sm-2" name="acao" id="acao" autocomplete="off"  >
                             <option></option>
                             <option value="Denúncia">Denúncia</option>
                             <option value="Informação">Informação</option>
@@ -139,7 +139,7 @@
                     </div>
                     <div class="col-12 col-md-6 col-xl-4 mb-3">
                         <label class="my-1 mr-2" for="setor">Com quem deseja falar?</label><br/>
-                        <select class="custom-select my-1 mr-sm-2" name="setor" id="setor" autocomplete="off" required >
+                        <select class="custom-select my-1 mr-sm-2" name="setor" id="setor" autocomplete="off"  >
                             <option></option>
                             <option value="Comercial">Comercial</option>
                             <option value="Financeiro">Financeiro</option>
@@ -153,7 +153,7 @@
                     </div>
                     <div class="col-12 col-md-6 col-xl-4 mb-3">
                         <label class="my-1 mr-2" for="tentativas">Quantas vezes você nos procurou?</label><br/>
-                        <select class="custom-select my-1 mr-sm-2" name="tentativas" id="tentativas" autocomplete="off" required >
+                        <select class="custom-select my-1 mr-sm-2" name="tentativas" id="tentativas" autocomplete="off"  >
                             <option></option>
                             <option value="1">Esta é a primeira vez</option>
                             <option value="2" selected>Esta é a segunda vez</option>
@@ -165,7 +165,7 @@
                         <fieldset>
                             <p class="form-check-label">Como gostaria de ser atendido?</p>
                             <div class="container-fluid">
-                                <label class="form-check-label"><input class="form-check-input" type="radio" name="prefere" id="pref-tel" value="Telefonar" required >Telefone</label><br/>
+                                <label class="form-check-label"><input class="form-check-input" type="radio" name="prefere" id="pref-tel" value="Telefonar"  >Telefone</label><br/>
                                 <label class="form-check-label"><input class="form-check-input" type="radio" name="prefere" id="pref-whatsApp" value="WhatsApp" checked >WhatsApp</label><br/>
                                 <label class="form-check-label"><input class="form-check-input" type="radio" name="prefere" id="pref-mail" value="E-mail" >E-mail</label>
                             </div>
@@ -185,11 +185,11 @@
                 </div>
                 <div class="form-row mb-3 justify-content-between">
                     <div class="col-4 mb-3">
-                        <button type="reset">Limpar Formulário</button>
+                        <button type="reset" value="reset">Limpar Formulário</button>
                     </div>
                     <div class="col-7"></div>
                     <div class="col-1 mb-3">
-                        <button id="submit" value="submit">Enviar</button>
+                        <button id="envia" type="submit">Enviar</button>
                     </div>
                 </div>
                 
