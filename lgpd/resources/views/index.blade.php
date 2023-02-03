@@ -180,7 +180,7 @@
                 </div>
                 <div class="form-row mb-3 justify-content-center">
                     <div class="col-12">
-                        <div class="g-recaptcha" data-sitekey="6Lf_-BIkAAAAAJqlCgfpiphT04o79exihMtHkatJ"></div>
+                        <div class="g-recaptcha" data-sitekey="6Lcsi04kAAAAAFntoxRZQnIAYQk8TtdPz4FLieqO"></div>
                     </div>
                 </div>
                 <div class="form-row mb-3 justify-content-between">

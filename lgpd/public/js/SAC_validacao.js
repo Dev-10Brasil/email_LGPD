@@ -5,12 +5,11 @@ $('input').not('#submit').keypress(function(e) {
     }
 });
 
-
 $('#formulario').on('submit', function (event) {
-    swal.showLoading()
-    //event.preventDefault();
+    swal.showLoading();
+    event.preventDefault();
 
-    var formData = new FormData(this)
+    //var formData = new FormData(this)
 
     let nome = $('#nome').val();
     let telefone = $('#telefone').val();
@@ -29,56 +28,56 @@ $('#formulario').on('submit', function (event) {
     /**
      * Validações
      */
-    if(nome == '' || nome == undefined || nome == null) {
+    if(nome == '' || nome == ' ' || nome == undefined || nome == null) {
         return swal.fire({
             icon: 'warning',
             text: 'Insira seu nome, por favor.'
         }), false;
     }
 
-    if(telefone == '' || telefone == undefined || telefone == null) {
+    if(telefone == '' || telefone == ' ' || telefone == undefined || telefone == null) {
         return swal.fire({
             icon: 'warning',
             text: 'Insira seu número de telefone, por favor.'
         }), false;
     }
     
-    if(email == '' || email == undefined || email == null) {
+    if(email == '' || email == ' ' || email == undefined || email == null) {
         return swal.fire({
             icon: 'warning',
             text: 'Insira seu e-mail, por favor.'
         }), false;
     }
     
-    if(cep == '' || cep == undefined || cep == null) {
+    if(cep == '' || cep == ' ' || cep == undefined || cep == null) {
         return swal.fire({
             icon: 'warning',
             text: 'Insira seu CEP, por favor.'
         }), false;
     }
 
-    if(estado == '' || estado == undefined || estado == null || cidade == '' || cidade == undefined || cidade == null) {
+    if(estado == '' || estado == ' ' || estado == undefined || estado == null || cidade == '' || cidade == ' ' || cidade == undefined || cidade == null) {
         return swal.fire({
             icon: 'warning',
             text: 'Por favor, verifique se o seu CEP foi digitado corretamente.'
         }), false;
     }
     
-    if(acao == '' || acao == undefined || acao == null) {
+    if(acao == '' || acao == ' ' || acao == undefined || acao == null) {
         return swal.fire({
             icon: 'warning',
             text: 'Diga-nos o motivo do contato, por favor. Por favor, selecione uma das opções do campo O QUE VOCÊ DESEJA FAZER?'
         }), false;
     }
     
-    if(setor == '' || setor == undefined || setor == null) {
+    if(setor == '' || setor == ' ' || setor == undefined || setor == null) {
         return swal.fire({
             icon: 'warning',
             text: 'Selecione o setor com o qual você gostaria de falar, por favor.'
         }), false;
     }
     
-    if(tentativas == '' || tentativas == undefined || tentativas == null) {
+    if(tentativas == '' || tentativas == ' ' || tentativas == undefined || tentativas == null) {
         return swal.fire({
             icon: 'warning',
             text: 'Selecione a quantidade de vezes que tentou contato anteriormente, por favor.'
@@ -108,50 +107,18 @@ $('#formulario').on('submit', function (event) {
     }
     //     ----------------------------------------------------------------
     
-    if($('#feedback').val() == '') {
+    if($('#feedback').val() == '' || $('#feedback').val() == ' ') {
         return swal.fire({
             icon: 'warning',
             text: 'Descreva o seu problema para que possamos atender melhor às vossas necessidades, por favor.'
         }), false;
     }
     
-    if(captcha == '' || captcha == undefined || captcha == null) {
+    if(captcha == '' || captcha == ' ' || captcha == undefined || captcha == null) {
         return swal.fire({
             icon: 'warning',
             text: 'Marque a caixa \"Não sou um robô\", por favor.'
         }), false;
     }
     
-    
-    formData.set('nome', nome);
-    formData.set('telefone', telefone);
-    formData.set('celular', celular);
-    formData.set('email', email);
-    formData.set('cep', cep);
-    formData.set('estado', estado);
-    formData.set('cidade', cidade);
-    formData.set('acao', acao);
-    formData.set('setor', setor);
-    formData.set('tentativas', tentativas);
-    formData.set('prefere', metodoContato);
-    formData.set('feedback', feedback);
-
-    $.ajax({
-        url: "/email",
-        method: "POST",
-        dataType: 'JSON',
-        data: formData,
-        contentType: false,
-        cache: false,
-        processData: false,
-        success: function (data) {
-            console.log(data)
-            return swal.fire({ text: 'Email enviado com sucesso', icon: 'success' })
-        },
-        error: function (data) {
-            console.log(data)
-            //console.log(response.status);
-            return swal.fire({ text: 'Erro ao envia email', icon: 'error' })
-        },
-    })
 });
