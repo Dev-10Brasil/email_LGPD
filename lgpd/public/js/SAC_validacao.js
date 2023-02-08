@@ -1,13 +1,7 @@
 
-$('input').not('#submit').keypress(function(e) {
-    if(e.which === 13) {
-        return false;
-    }
-});
-
 $('#formulario').on('submit', function (event) {
     swal.showLoading();
-    event.preventDefault();
+    //event.preventDefault();
 
     //var formData = new FormData(this)
 
@@ -28,6 +22,7 @@ $('#formulario').on('submit', function (event) {
     /**
      * Validações
      */
+    
     if(nome == '' || nome == ' ' || nome == undefined || nome == null) {
         return swal.fire({
             icon: 'warning',
@@ -66,7 +61,7 @@ $('#formulario').on('submit', function (event) {
     if(acao == '' || acao == ' ' || acao == undefined || acao == null) {
         return swal.fire({
             icon: 'warning',
-            text: 'Diga-nos o motivo do contato, por favor. Por favor, selecione uma das opções do campo O QUE VOCÊ DESEJA FAZER?'
+            text: 'Por favor, selecione uma das opções do campo O QUE VOCÊ DESEJA FAZER?'
         }), false;
     }
     
@@ -105,9 +100,9 @@ $('#formulario').on('submit', function (event) {
             text: 'Selecione apenas uma das opções de preferência de contato, por favor.'
         }), false;
     }
-    //     ----------------------------------------------------------------
+    //      ----------------------------------------------------------------
     
-    if($('#feedback').val() == '' || $('#feedback').val() == ' ') {
+    if(feedback == '' || feedback == ' ' || feedback == undefined || feedback == null) {
         return swal.fire({
             icon: 'warning',
             text: 'Descreva o seu problema para que possamos atender melhor às vossas necessidades, por favor.'

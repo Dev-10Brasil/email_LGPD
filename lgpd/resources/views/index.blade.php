@@ -84,14 +84,14 @@
 
         <div class="col-12 col-md-6" id="containerFormulario">
 
-            <form class="needs-validation" id="formulario" method="POST" action="/email">
+            <form class="needs-validation" id="formulario" name="formulario" method="POST" action="/email">
 
                 @csrf
                 
                 <div class="form-row justify-content-center">
                     <div class="col-12 mb-3">
                         <label class="my-1 mr-2" for="nome">Nome Completo:</label><br/>
-                        <input value="Áquila Augusto Anhaia Trindade" type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome completo" autocomplete="off"  pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required />
+                        <input value="Toninho Tornado" type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome completo" autocomplete="off"  pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required />
                     </div>
                 </div>
                 <div class="form-row justify-content-between">

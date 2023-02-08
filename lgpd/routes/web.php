@@ -18,4 +18,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/{id}', function ($id) {
+    return view('msg', ['id' => $id]);
+});
+
 Route::post('/email', [EmailController::class, 'email']);

@@ -5,13 +5,14 @@ use Illuminate\Http\Request;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use RealRashid\SweetAlert\Facades\Alert;
 
 require "../vendor/autoload.php";
 
 class EmailController {
 
     public function email(REQUEST $request) {
-
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $secret = "6Lcsi04kAAAAALRdQ6kJRR1Dnuvq940DAGhJ2jbJ";
             $response = $_POST["g-recaptcha-response"];
@@ -21,20 +22,20 @@ class EmailController {
             $result = json_decode($url, TRUE);
 
             if ($result["success"] == 1) {
-
+                
                 //dd($_POST);
                 //envia
                 if (isset($request->nome)) {
                     $nome = $request->nome;
                 } else {
-                    header('location: /');
+                    header('location: /ERRO_a');
                     exit;
                 }
                 
                 if (isset($request->telefone)) {
                     $telefone = $request->telefone;
                 } else {
-                    header('location: /');
+                    header('location: /ERRO_b');
                     exit;
                 }
 
@@ -47,67 +48,67 @@ class EmailController {
                 if (isset($request->email)) {
                     $email = $request->email;
                 } else {
-                    header('location: /');
+                    header('location: /ERRO_c');
                     exit;
                 }
 
                 if (isset($request->cep)) {
                     $cep = $request->cep;
                 } else {
-                    header('location: /');
+                    header('location: /ERRO_d');
                     exit;
                 }
 
                 if (isset($request->estado)) {
                     $estado = $request->estado;
                 } else {
-                header('location: /');
-                exit;
+                    header('location: /ERRO_e');
+                    exit;
                 }
 
                 if (isset($request->cidade)) {
                     $cidade = $request->cidade;
                 } else {
-                header('location: /');
-                exit;
+                    header('location: /ERRO_f');
+                    exit;
                 }
 
                 if (isset($request->acao)) {
                     $acao = $request->acao;
                 } else {
-                    header('location: /');
+                    header('location: /ERRO_g');
                     exit;
                 }
 
                 if (isset($request->setor)) {
                     $setor = $request->setor;
                 } else {
-                    header('location: /');
+                    header('location: /ERRO_h');
                     exit;
                 }
 
                 if (isset($request->tentativas)) {
                     $tentativas = $request->tentativas;
                 } else {
-                    header('location: /');
+                    header('location: /ERRO_i');
                     exit;
                 }
 
                 if (isset($request->prefere)) {
                     $prefere = $request->prefere;
                 } else {
-                    header('location: /');
+                    header('location: /ERRO_j');
                     exit;
                 }
-
 
                 if (isset($request->feedback)) {
                     $feedback = $request->feedback;
                 } else {
-                    header('location: /');
+                    header('location: /ERRO_k');
                     exit;
                 }
 
+                
                 $mail = new PHPMailer(true);
 
                 try {
@@ -122,27 +123,43 @@ class EmailController {
                     $mail->Port = 2525;
                     //$mail->SMTPDebug = 1;
                     //$mail->SMTPOptions = array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true));
-                    $mail->setFrom('from@example.com', 'Mailer');
-                    $mail->AddAddress('joe@example.net', 'Joe User');
+                    $mail->setFrom('SAC@tenbrasil.com', 'Mailer');
+                    $mail->AddAddress('SAC_LGPD@tenbrasil.net', 'Joe User');
                     $mail->isHTML(true);
+                    $mail->AddEmbeddedImage('img/logo_cabecalho.png', 'logo_ref');
                     $mail->CharSet = 'UTF-8';
-                    $mail->Subject = "Teste de Envio"; //Assunto
-                    $mail->Body = "<h1 style='text-align: center;'>Este é um E-mail teste com as informações</h1>  <br>  <br>  <p style='text-align: center;'>O cliente cliente tentou contato em data às horário na intenção de ação com o setor setor. Seguem seus dados para contato.</p>  <br>  <br>  <h4>Dados Pessoais:</h4>  <p>Nome: $nome</p>  <br>  <h4>Dados para Contato:</h4>  <p>Telefone: $telefone</p>  <p>Celular: $celular</p>  <p>E-mail: $email</p>  <br>  <h4>Endereço:</h4>  <p>CEP: $cep</p>  <p>Estado: $estado</p>  <p>Cidade: $cidade</p>  <br>  <h4>Intenções:</h4>  <p>Ação: $acao</p>  <p>Setor: $setor</p>  <p>Tentativa de contato: $tentativas</p>  <br>  <h4>Preferências:</h4>  <p>Prefere ser contatado via: $prefere</p>  <br>  <h4>Mensagem:</h4>  <pre>$feedback</pre>"; //body
-                    $mail->AltBody = "Este é um E-mail teste com as informações\n\n O cliente cliente tentou contato em data às horário na intenção de ação com o setor setor. Seguem seus dados para contato.\n\n Dados Pessoais:\n Nome: $nome\n\n Dados para Contato:\n Telefone: $telefone\n Celular: $celular\n E-mail: $email\n\n Endereço:\nCEP: $cep\n Estado: $estado\n Cidade: $cidade\n\n Intenções:\n Ação: $acao\n Setor: $setor\n Tentativa de contato: $tentativas\n\n Preferências:\n Prefere ser contatado via: $prefere\n Mensagem: $feedback";
+                    $mail->Subject = "Mensagem sobre uso de dados LGPD"; //Assunto
+                    $mail->Body = "<div style='padding: 40px;'><div style='text-align: center;'><img src='cid:logo_ref' style='width: 20%; min-width: 200px;'></div><br><br><p style='text-align: center;'>O cliente $nome tentou contato na intenção de $acao com o setor $setor. Seguem seus dados para contato:</p><br><br><h3 style='text-decoration: underline;'>Dados Pessoais:</h3><p>Nome: $nome</p><br><h3 style='text-decoration: underline;'>Dados para Contato:</h3><p>Telefone: $telefone</p><p>Celular: $celular</p><p>E-mail: $email</p><br><h3 style='text-decoration: underline;'>Endereço:</h3><p>CEP: $cep</p><p>Estado: $estado</p><p>Cidade: $cidade</p><br><h3 style='text-decoration: underline;'>Intenções:</h3><p>Ação: $acao</p><p>Setor: $setor</p><p>Tentativa de contato: $tentativas</p><br><h3 style='text-decoration: underline;'>Preferências:</h3><p>Prefere ser contatado via: $prefere</p><br><h3 style='text-decoration: underline;'>Mensagem:</h3><pre>$feedback</pre></div>"; //body
+                    $mail->AltBody = "O cliente $nome tentou contato na intenção de $acao com o setor $setor. Seguem seus dados para contato:\n\nDados Pessoais:\nNome: $nome\n\nDados para Contato:\nTelefone: $telefone\nCelular: $celular\nE-mail: $email\n\nEndereço:\nCEP: $cep\nEstado: $estado\nCidade: $cidade\n\nIntenções:\nAção: $acao\nSetor: $setor\nTentativa de contato: $tentativas\n\nPreferências:\nPrefere ser contatado via: $prefere\nMensagem: $feedback";
 
                     $mail->Send(); //Envia o Email
 
-                    echo 'Email enviado com sucesso!';
+                    $mail->setFrom('SAC@tenbrasil.com', 'Mailer');
+                    $mail->AddAddress($email, 'Joe User');
+                    $mail->isHTML(true);
+                    $mail->CharSet = 'UTF-8';
+                    $mail->Subject = "Recebemos a sua mensagem!"; //Assunto
+                    $mail->Body = "<div style='padding: 40px;'><div style='text-align: center;'><img src='cid:logo_ref' style='width: 20%; min-width: 200px;'></div><br/><p style='text-align: center;'>Olá $nome!</p><p style='text-align: center;'>Venho, por meio desta mensagem, dizer-te que recebemos a tua mensagem e, assim que possível, entraremos em contato.</p><p style='text-align: center;'>Em nome de toda a equipe Ten Brasil, eu gostaria de enfatizar que nós levamos nosso trabalho muito a sério e nos importamos muito com você. Posso garantir que estamos seguindo todas as diretrizes da LGPD (Lei Geral de Proteção de Dados) e tomando todos os cuidados para garantir a tua privacidade e a segurança dos teus dados pessoais.</p><p style='text-align: center;'>Caso queiras mais detalhes, eles estarão disponíveis no arquivo em anexo.</p><p style='text-align: center;'>Caso tenhas alguma dúvida ou queira se informar sobre como estamos tratando os teus dados, não hesite em perguntar.</p><p style='text-align: center;'>Somos muito gratos pela sua confiança.</p><br/><br/><br/><p style='text-align: center;'>Atenciosamente: Ten Brasil LTDA</p></div>"; //body
+                    $mail->AltBody = "Ten Brasil\n\nOlá $nome!\n\nVenho, por meio desta mensagem, dizer-te que recebemos a tua mensagem e, assim que possível, entraremos em contato.\nEm nome de toda a equipe Ten Brasil, eu gostaria de enfatizar que nós levamos nosso trabalho muito a sério e nos importamos muito com você. Posso garantir que estamos seguindo todas as diretrizes da LGPD (Lei Geral de Proteção de Dados) e tomando todos os cuidados para garantir a tua privacidade e a segurança dos teus dados pessoais.\nCaso queiras mais detalhes, eles estarão disponíveis no arquivo em anexo.\nCaso tenhas alguma dúvida ou queira se informar sobre como estamos tratando os teus dados, não hesite em perguntar.\nSomos muito gratos pela sua confiança.\n\n\nAtenciosamente: Ten Brasil LTDA";
+                
+                    $mail->Send(); //Envia o Email
+
+                    header('location: /SEND');
+                    exit;
 
                 } catch (Exception $e) {
 
-                    echo 'Erro: Email não enviado com sucesso. Error PHPMailer: {$mail->ErrorInfo}';
+                    header('location: /ERROR');
+                    exit;
 
                 }
+               
 
             } else {
-                header('location: /');
+
+                header('location: /ERRO_Mr.Robot');
                 exit;
+                
             }
 
         }
